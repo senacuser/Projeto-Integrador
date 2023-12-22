@@ -8,7 +8,7 @@ def index():
 
 @app.route('/telaprincipal')
 def telaprincipal():
-    return render_template('telaprincipal.html')
+    return render_template('user.html')
 
 @app.route('/cadastro')
 def cadastro():
