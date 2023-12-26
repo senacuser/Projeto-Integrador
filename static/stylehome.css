@@ -6,6 +6,8 @@
     border: none;
 }
 
+/* Scrollbar styles */
+
 html::-webkit-scrollbar {
     width: 5rem;
 }
@@ -19,8 +21,158 @@ html::-webkit-scrollbar-thumb {
     border-radius: 5rem;
 }
 
-body{
-    height: 100vh;
-    background-color: #000;
-    background-image: url("../static/fundohome.png");
+/* Body styles */
+
+body {
+    background-color: blueviolet;
+}
+
+/* Header styles */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    padding-top: 1.5rem;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.logo img {
+    width: 75px;
+    height: auto;
+    margin-left: 5rem;
+}
+
+hr {
+    border-bottom: solid 0.1px;
+    color: rgb(54, 46, 46);
+}
+
+/* Content title styles */
+
+.c-title {
+    margin-left: 5rem;
+    margin-top: 10rem;
+}
+
+.c-title h1 {
+    color: aliceblue;
+    font-size: 4.8rem;
+}
+
+.c-title p {
+    color: rgb(231, 208, 208);
+    line-height: 2rem;
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+/* Navigation button styles */
+
+nav.button {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    --border-color: linear-gradient(-45deg, #ffae00, #7e03aa, #00fffb);
+    --border-width: .125em;
+    --curve-size: .5em;
+    --blur: 30px;
+    --bg: #080312;
+    --color: #afffff;
+    color: var(--color);
+    position: relative;
+    isolation: isolate;
+    display: inline-grid;
+    place-content: center;
+    padding: 0.35em 3.3em 0.35em 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    box-shadow: inset 0 0 1.6em -0.6em #714da6, 10px 10px 20px rgba(0, 0, 0, .6);
+    clip-path: polygon(0% var(--curve-size), var(--curve-size) 0, 100% 0, 100% calc(100% - var(--curve-size)), calc(100% - var(--curve-size)) 100%, 0 100%);
+    transition: color 250ms;
+}
+
+nav.button::after,
+nav.button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+nav.button::before {
+    background: var(--border-color);
+    background-size: 300% 300%;
+    animation: move-bg7234 5s ease infinite;
+    z-index: -2;
+}
+
+@keyframes move-bg7234 {
+    0% {
+        background-position: 31% 0%;
+    }
+
+    50% {
+        background-position: 70% 100%;
+    }
+
+    100% {
+        background-position: 31% 0%;
+    }
+}
+
+nav.button::after {
+    background: var(--bg);
+    z-index: -1;
+    clip-path: polygon(var(--border-width) calc(var(--curve-size) + var(--border-width) * .5), calc(var(--curve-size) + var(--border-width) * .5) var(--border-width), calc(100% - var(--border-width)) var(--border-width), calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * .5)), calc(100% - calc(var(--curve-size) + var(--border-width) * .5)) calc(100% - var(--border-width)), var(--border-width) calc(100% - var(--border-width)));
+    transition: clip-path 500ms;
+}
+
+nav.button:hover::after,
+nav.button:focus::after {
+    clip-path: polygon(calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)), calc(100% - var(--border-width)) var(--border-width), calc(100% - var(--border-width)) var(--border-width), calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * .5)), calc(100% - calc(var(--curve-size) + var(--border-width) * .5)) calc(100% - var(--border-width)), var(--border-width) calc(100% - var(--border-width)));
+    transition: 200ms;
+}
+
+nav.button:hover,
+nav.button:focus {
+    color: #fff;
+}
+
+/* Icon styles */
+
+nav.button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+    right: 0.3em;
+    transition: all 0.3s;
+}
+
+nav.button:hover .icon {
+    width: calc(100% - 0.6em);
+}
+
+nav.button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #7b52b9;
+}
+
+nav.button:hover .icon svg {
+    transform: translateX(0.1em);
+}
+
+nav.button:active .icon {
+    transform: scale(0.95);
 }
