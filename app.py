@@ -1,22 +1,37 @@
 from flask import Flask, render_template, request, redirect, url_for
 import smtplib
 from email.mime.text import MIMEText
+import mysql.connector
 
 app = Flask(__name__)
+
+# Configuração do banco de dados
+db = mysql.connector.connect(
+    host="seu_host",
+    user="seu_usuario",
+    password="sua_senha",
+    database="seu_banco_de_dados"
+)
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/telaprincipal')
-def telaprincipal():
-    return render_template('telaprincipal.html')
+# rota para a página de login
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Lógica de autenticação aqui
+        return redirect(url_for('dashboard'))
+    return render_template('login.html')
 
-@app.route('/user')
-def user():
-    return render_template('user.html')
+# rota para o dashboard
+@app.route('/dashboard')
+def dashboard():
+    # Lógica para recuperar dados do banco e criar dashboards
+    return render_template('dashboard.html')
 
-
+#Cadastro e confirmação de email
 @app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
     if request.method == 'POST':
