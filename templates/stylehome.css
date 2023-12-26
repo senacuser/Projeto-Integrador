@@ -77,3 +77,16 @@ header {
 .action_btn:active {
     scale: 0.95;
 }
+
+section#hero{
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: right;
+    text-align: right;
+    color: #fff;
+    margin-right: -556px;
+    margin-top: 150px;
+    margin-left: 160px;
+}
