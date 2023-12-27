@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import smtplib
 from email.mime.text import MIMEText
 import mysql.connector
@@ -16,6 +16,11 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('Home.html')
+
+# Rota para servir arquivos estáticos do diretório "main"
+@app.route('/main/<path:filename>')
+def serve_static(filename):
+    return send_from_directory('main', filename)
 
 # rota para a página de login
 @app.route('/login', methods=['GET', 'POST'])
