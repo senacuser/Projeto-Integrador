@@ -19,7 +19,9 @@
 
                 <nav class="button">
                     <!-- Use semantic HTML, e.g., <nav> for the header -->
-                    <button class="btn2" type="button">Clique-me</button>
+                    <button class="btn2" type="button"
+                        onclick="window.location.href='{{ url_for('cadastro') }}'">Cadastre-se</button>
+
                 </nav>
             </header>
             <hr /> <!-- Close the <hr> tag properly -->
@@ -30,7 +32,9 @@
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
-                <button class="btn" type="button">Cadastre-se</button>
+                <button class="btn" type="button"
+                    onclick="window.location.href='{{ url_for('cadastro') }}'">Cadastre-se</button>
+
             </div>
         </div>
     </body>

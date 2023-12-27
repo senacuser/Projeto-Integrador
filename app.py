@@ -6,16 +6,16 @@ import mysql.connector
 app = Flask(__name__)
 
 # Configuração do banco de dados
-db = mysql.connector.connect(
-    host="seu_host",
-    user="seu_usuario",
-    password="sua_senha",
-    database="seu_banco_de_dados"
-)
+#db = mysql.connector.connect(
+#    host="seu_host",
+#    user="seu_usuario",
+#    password="sua_senha",
+#    database="seu_banco_de_dados"
+#)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('Home.html')
 
 # rota para a página de login
 @app.route('/login', methods=['GET', 'POST'])
@@ -54,7 +54,8 @@ def cadastro():
             return f"Erro ao enviar e-mail: {erro_envio_email}"
 
         # Redirecionar para a página inicial ou uma página de confirmação
-        return redirect(url_for('user'))
+        return render_template('user.html')
+
 
     # Se a solicitação for do tipo GET, renderize a página de cadastro
     return render_template('cadastro.html')
