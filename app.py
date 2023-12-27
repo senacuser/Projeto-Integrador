@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 import smtplib
 from email.mime.text import MIMEText
 import mysql.connector
-
 app = Flask(__name__)
 
 # Configuração do banco de dados
