@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('Home.html')
+    return render_template('index.html')
 
 # Rota para servir arquivos estáticos do diretório "main"
 @app.route('/main/<path:filename>')
