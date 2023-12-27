@@ -21,6 +21,11 @@ def index():
 def serve_static(filename):
     return send_from_directory('main', filename)
 
+# Nova rota para servir arquivos estáticos de outro diretório
+@app.route('/imagem/<path:filename>')
+def serve_another_static(filename):
+    return send_from_directory('imagem', filename)
+
 # rota para a página de login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
