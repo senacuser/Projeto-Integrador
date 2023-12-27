@@ -7,17 +7,19 @@
 
 body{
     height: 900vh;
-    background: linear-gradient(
+    /*background: linear-gradient(
         90deg,
         rgba(2, 0, 36, 1) 0%,
         rgba(9, 9, 121, 1) 35%,
         rgba(0, 212, 255, 1) 100%
-      );
-      
+      );*/
+      background: linear-gradient(to bottom, #7302eb 30%, #7302eb 60%, #eb02dc 100%);
+        
 }
 
 nav.menu-lateral{
     margin: 0;
+    margin-top: 60px;
     width: 75px;
     height: 100%;
     background-color:linear-gradient(

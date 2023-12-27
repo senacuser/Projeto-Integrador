@@ -6,7 +6,7 @@
 }
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #7302eb;
+  background-image: linear-gradient(#7302eb,#eb02dc);
 }
 .container {
   display: flex;
