@@ -14,132 +14,136 @@
     </head>
     <body>
         <header>
-            <div class="navbar">    
-                <a href="../templates/index.html"><img  class="logo" src="../imagem/logohome.png"></a>
+            <div class="navbar">
+                <a href="../templates/index.html"><img class="logo"
+                        src="../imagem/logohome.png"></a>
                 <ul class="links">
                     <li><a href="{{ url_for('index') }}" a>Home</li>
-                    <li><a href="#socucoes">Nossas soluções</a></li>
-                    <li><a href="#quemsomos">Sobre nós</a></li>
-                    
-                </ul>
-               
+                        <li><a href="#socucoes">Nossas soluções</a></li>
+                        <li><a href="#quemsomos">Sobre nós</a></li>
+
+                    </ul>
+
+                </div>
+            </header>
+
+            <div class="container">
+                <div class="content first-content">
+                    <div class="first-column">
+                        <h2 class="title title-primary">Bem-Vindo!</h2>
+                        <p class="description description-primary">já efetuou
+                            seu
+                            cadastro</p>
+                        <p class="description description-primary">entrar com
+                            informações pessoais</p>
+                        <button id="signin"
+                            class="btn btn-primary">Login</button>
+                    </div>
+                    <div class="second-column">
+                        <h2 class="title title-second">Criar conta</h2>
+                        <div class="social-media">
+                            <ul class="list-social-media">
+                                <a class="link-social-media" href="#">
+                                    <li class="item-social-media">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </li>
+                                </a>
+                                <a class="link-social-media" href="#">
+                                    <li class="item-social-media">
+                                        <i class="fab fa-google-plus-g"></i>
+                                    </li>
+                                </a>
+                                <a class="link-social-media" href="#">
+                                    <li class="item-social-media">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </li>
+                                </a>
+                            </ul>
+                        </div><!-- social media -->
+                        <p class="description description-second">use seu email
+                            como
+                            registro:</p>
+                        <form class="form" action="{{ url_for('cadastro') }}"
+                            method="post">
+                            <label class="label-input" for="nome">
+                                <i class="far fa-user icon-modify"></i>
+                                <input type="text" id="nome" name="nome"
+                                    placeholder="Nome" required>
+                            </label>
+
+                            <label class="label-input" for="email">
+                                <i class="far fa-envelope icon-modify"></i>
+                                <input type="email" id="email" name="email"
+                                    placeholder="Email" required>
+                            </label>
+
+                            <label class="label-input" for="senha">
+                                <i class="fas fa-lock icon-modify"></i>
+                                <input type="password" id="senha" name="senha"
+                                    placeholder="Senha" required>
+                            </label>
+
+                            <button class="btn btn-second"
+                                type="submit">Cadastrar</button>
+                        </form>
+
+                    </div><!-- second column -->
+                </div><!-- first content -->
+                <div class="content second-content">
+                    <div class="first-column">
+                        <h2 class="title title-primary">Olá, tudo bem?</h2>
+                        <p class="description description-primary">Ainda não fez
+                            seu
+                            cadastro</p>
+                        <p class="description description-primary">vamos começar
+                            sua
+                            jornada</p>
+                        <button id="signup"
+                            class="btn btn-primary">Cadastrar</button>
+                    </div>
+                    <div class="second-column">
+                        <h2 class="title title-second">Login</h2>
+                        <div class="social-media">
+                            <ul class="list-social-media">
+                                <a class="link-social-media" href="#">
+                                    <li class="item-social-media">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </li>
+                                </a>
+                                <a class="link-social-media" href="#">
+                                    <li class="item-social-media">
+                                        <i class="fab fa-google-plus-g"></i>
+                                    </li>
+                                </a>
+                                <a class="link-social-media" href="#">
+                                    <li class="item-social-media">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </li>
+                                </a>
+                            </ul>
+                        </div><!-- social media -->
+                        <p class="description description-second">ou use seu
+                            email:</p>
+                            <form class="form" action="{{ url_for('login') }}" method="post">
+
+                            <label class="label-input" for="email">
+                                <i class="far fa-envelope icon-modify"></i>
+                                <input type="email" id="email" name="email" placeholder="Email" required>
+                            </label>
+                            
+                            <label class="label-input" for="senha">
+                                <i class="fas fa-lock icon-modify"></i>
+                                <input type="password" id="senha" name="senha" placeholder="Senha" required>
+                            </label>
+                            
+                            <a class="password" href="#">esqueceu sua senha?</a>
+                            <button class="btn btn-second" type="submit">Login</button>
+                        </form>
+                    </div><!-- second column -->
+                </div><!-- second-content -->
             </div>
-        </header>
+            <script
+                src="{{ url_for('serve_static', filename='apps.js') }}"></script>
 
-
-
-
-        <div class="container">
-            <div class="content first-content">
-                <div class="first-column">
-                    <h2 class="title title-primary">Bem-Vindo!</h2>
-                    <p class="description description-primary">já efetuou seu
-                        cadastro</p>
-                    <p class="description description-primary">entrar com
-                        informações pessoais</p>
-                    <button id="signin" class="btn btn-primary">Login</button>
-                </div>
-                <div class="second-column">
-                    <h2 class="title title-second">Criar conta</h2>
-                    <div class="social-media">
-                        <ul class="list-social-media">
-                            <a class="link-social-media" href="#">
-                                <li class="item-social-media">
-                                    <i class="fab fa-facebook-f"></i>
-                                </li>
-                            </a>
-                            <a class="link-social-media" href="#">
-                                <li class="item-social-media">
-                                    <i class="fab fa-google-plus-g"></i>
-                                </li>
-                            </a>
-                            <a class="link-social-media" href="#">
-                                <li class="item-social-media">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </li>
-                            </a>
-                        </ul>
-                    </div><!-- social media -->
-                    <p class="description description-second">use seu email como
-                        registro:</p>
-                    <form class="form" action="{{ url_for('cadastro') }}"
-                        method="post">
-                        <label class="label-input" for="nome">
-                            <i class="far fa-user icon-modify"></i>
-                            <input type="text" id="nome" name="nome"
-                                placeholder="Nome" required>
-                        </label>
-
-                        <label class="label-input" for="email">
-                            <i class="far fa-envelope icon-modify"></i>
-                            <input type="email" id="email" name="email"
-                                placeholder="Email" required>
-                        </label>
-
-                        <label class="label-input" for="senha">
-                            <i class="fas fa-lock icon-modify"></i>
-                            <input type="password" id="senha" name="senha"
-                                placeholder="Senha" required>
-                        </label>
-
-                        <button class="btn btn-second"
-                            type="submit">Cadastrar</button>
-                    </form>
-
-                </div><!-- second column -->
-            </div><!-- first content -->
-            <div class="content second-content">
-                <div class="first-column">
-                    <h2 class="title title-primary">Olá, tudo bem?</h2>
-                    <p class="description description-primary">Ainda não fez seu
-                        cadastro</p>
-                    <p class="description description-primary">vamos começar sua
-                        jornada</p>
-                    <button id="signup"
-                        class="btn btn-primary">Cadastrar</button>
-                </div>
-                <div class="second-column">
-                    <h2 class="title title-second">Login</h2>
-                    <div class="social-media">
-                        <ul class="list-social-media">
-                            <a class="link-social-media" href="#">
-                                <li class="item-social-media">
-                                    <i class="fab fa-facebook-f"></i>
-                                </li>
-                            </a>
-                            <a class="link-social-media" href="#">
-                                <li class="item-social-media">
-                                    <i class="fab fa-google-plus-g"></i>
-                                </li>
-                            </a>
-                            <a class="link-social-media" href="#">
-                                <li class="item-social-media">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </li>
-                            </a>
-                        </ul>
-                    </div><!-- social media -->
-                    <p class="description description-second">ou use seu
-                        email:</p>
-                    <form class="form">
-
-                        <label class="label-input" for>
-                            <i class="far fa-envelope icon-modify"></i>
-                            <input type="email" placeholder="Email">
-                        </label>
-
-                        <label class="label-input" for>
-                            <i class="fas fa-lock icon-modify"></i>
-                            <input type="password" placeholder="Password">
-                        </label>
-
-                        <a class="password" href="#">esqueceu sua senha?</a>
-                        <button class="btn btn-second">Login</button>
-                    </form>
-                </div><!-- second column -->
-            </div><!-- second-content -->
-        </div>
-        <script src="{{ url_for('serve_static', filename='apps.js') }}"></script>
-
-    </body>
-</html>
+        </body>
+    </html>

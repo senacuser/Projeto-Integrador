@@ -1,16 +1,30 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import smtplib
 from email.mime.text import MIMEText
-import mysql.connector
+import sqlite3  # Adição para usar SQLite
+
 app = Flask(__name__)
 
-# Configuração do banco de dados
-#db = mysql.connector.connect(
-#    host="seu_host",
-#    user="seu_usuario",
-#    password="sua_senha",
-#    database="seu_banco_de_dados"
-#)
+# Configuração do banco de dados SQLite
+def criar_tabela_usuarios():
+    conn = sqlite3.connect('usuarios.db')
+    cursor = conn.cursor()
+
+    # Criar tabela de usuários se não existir
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS usuarios (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT NOT NULL,
+            email TEXT NOT NULL,
+            senha TEXT NOT NULL
+        )
+    ''')
+
+    conn.commit()
+    conn.close()
+
+# Chama a função para criar a tabela no início do aplicativo
+criar_tabela_usuarios()
 
 @app.route('/')
 def index():
@@ -30,15 +44,36 @@ def serve_another_static(filename):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # Lógica de autenticação aqui
-        return redirect(url_for('dashboard'))
-    return render_template('login.html')
+        email = request.form['email']
+        senha = request.form['senha']
+
+        # Lógica para verificar as credenciais no banco de dados
+        conn = sqlite3.connect('usuarios.db')
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM usuarios WHERE email = ? AND senha = ?", (email, senha))
+        usuario = cursor.fetchone()
+
+        conn.close()
+
+        if usuario:
+            # Usuário autenticado com sucesso, redirecione para o dashboard
+            return redirect(url_for('user'))
+        else:
+            # Credenciais inválidas, exiba uma mensagem de erro
+            return render_template('cadastro.html', error='Credenciais inválidas. Tente novamente.')
+
+    # Se a solicitação for do tipo GET, renderize a página de login
+    return render_template('cadastro.html')
+
 
 # rota para o dashboard
-@app.route('/dashboard')
-def dashboard():
-    # Lógica para recuperar dados do banco e criar dashboards
-    return render_template('dashboard.html')
+# rota para a página do usuário (user.html)
+@app.route('/user')
+def user():
+    # Lógica para processar a página do usuário
+    return render_template('user.html')
+
 
 #Cadastro e confirmação de email
 @app.route('/cadastro', methods=['POST', 'GET'])
@@ -48,14 +83,18 @@ def cadastro():
         email = request.form['email']
         senha = request.form['senha']
 
-        # Aqui você pode adicionar lógica para salvar os dados em um banco de dados, se necessário.
+        # Adiciona lógica para salvar os dados na tabela de usuários
+        conn = sqlite3.connect('usuarios.db')
+        cursor = conn.cursor()
+
+        cursor.execute("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)", (nome, email, senha))
+
+        conn.commit()
+        conn.close()
 
         # Enviar e-mail de confirmação
         assunto = 'Confirmação de Cadastro'
-        mensagem = f'Olá {nome}\n\
-        obrigado por se cadastrar!\n\
-        Seu e-mail é {email}\n\
-        e sua senha é {senha}.'
+        mensagem = f'Olá {nome}, obrigado por se cadastrar!\nSeu e-mail é {email} e sua senha é {senha}.'
 
         erro_envio_email = enviar_email(email, assunto, mensagem)
 
@@ -64,7 +103,6 @@ def cadastro():
 
         # Redirecionar para a página inicial ou uma página de confirmação
         return render_template('user.html')
-
 
     # Se a solicitação for do tipo GET, renderize a página de cadastro
     return render_template('cadastro.html')
