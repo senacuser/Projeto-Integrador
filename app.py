@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import smtplib
 from email.mime.text import MIMEText
-import sqlite3  # Adição para usar SQLite
+import sqlite3
 
 app = Flask(__name__)
 
@@ -30,15 +30,10 @@ criar_tabela_usuarios()
 def index():
     return render_template('index.html')
 
-# Rota para servir arquivos estáticos do diretório "main"
-@app.route('/main/<path:filename>')
+# Rota para servir arquivos estáticos do diretório "static"
+@app.route('/static/<path:filename>')
 def serve_static(filename):
-    return send_from_directory('main', filename)
-
-# Nova rota para servir arquivos estáticos de outro diretório
-@app.route('/imagem/<path:filename>')
-def serve_another_static(filename):
-    return send_from_directory('imagem', filename)
+    return send_from_directory('static', filename)
 
 # rota para a página de login
 @app.route('/login', methods=['GET', 'POST'])
@@ -75,7 +70,7 @@ def user():
     return render_template('user.html')
 
 
-#Cadastro e confirmação de email
+# Cadastro e confirmação de email
 @app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
     if request.method == 'POST':

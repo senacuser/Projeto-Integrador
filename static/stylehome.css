@@ -92,7 +92,7 @@ header {
 .banner {
     width: 100%;
     height: 100vh;
-    background-image: url(../imagem/backhome.png);
+    background-image: url('/static/backhome.png');
     background-repeat: no-repeat;
     background-size: cover;
 }

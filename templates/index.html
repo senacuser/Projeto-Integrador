@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylehome.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/stylehome.css">
     <title>Finançaflex</title>
 </head>
 <body>
     <header id="faixa">
         <div class="navbar">    
-            <img class="logo" src="imagem/logohome.png" height="150px" alt="Finançaflex Logo">
+            <img class="logo" src="{{ url_for('static', filename='logohome.png') }}" height="150px" alt="Finançaflex Logo">
+
             <ul class="links">
                 <li><a href="#solucoes">Nossas soluções</a></li>
                 <li><a href="#sobre">Sobre nós</a></li>
@@ -23,11 +24,11 @@
     <main>
         <section id="solucoes">
             <h2>Nossas Soluções</h2>
-            <!-- Adicione mais conteúdo sobre as soluções -->
+            
         </section>
         <section id="sobre">
             <h2>Sobre Nós</h2>
-            <!-- Adicione mais conteúdo sobre a empresa -->
+            
         </section>
         <section id="texto01">
             <h3>Conquiste a estabilidade financeira: Finançaflex. <br>
