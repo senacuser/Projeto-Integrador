@@ -26,6 +26,7 @@ def criar_tabela_usuarios():
 # Chama a função para criar a tabela no início do aplicativo
 criar_tabela_usuarios()
 
+# Página inicial
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -35,7 +36,7 @@ def index():
 def serve_static(filename):
     return send_from_directory('static', filename)
 
-# rota para a página de login
+# Rota para a página de login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -61,16 +62,13 @@ def login():
     # Se a solicitação for do tipo GET, renderize a página de login
     return render_template('cadastro.html')
 
-
-# rota para o dashboard
-# rota para a página do usuário (user.html)
+# Rota para o dashboard (página do usuário)
 @app.route('/user')
 def user():
     # Lógica para processar a página do usuário
     return render_template('user.html')
 
-
-# Cadastro e confirmação de email
+# Rota para a página de cadastro
 @app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
     if request.method == 'POST':
@@ -102,15 +100,31 @@ def cadastro():
     # Se a solicitação for do tipo GET, renderize a página de cadastro
     return render_template('cadastro.html')
 
+# Rota para o calendário
 @app.route('/calendario')
 def calendario():
     return render_template('calend.html')
 
+# Rotas adicionadas com caminhos únicos
+@app.route('/iniciar')
+def iniciar():
+    return render_template('iniciar.html')
+
+@app.route('/notas')
+def notas():
+    return render_template('notas.html')
+
+@app.route('/perfil')
+def perfil():
+    return render_template('perfil.html')
+
+# Função para enviar e-mails
 def enviar_email(destinatario, assunto, mensagem):
     remetente = 'financaflex@gmail.com'  # Substitua pelo seu e-mail
     senha = 'wlwy ozez twni fjhm'
 
     try:
+        # Lógica para enviar e-mail usando o módulo smtplib
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
         server.login(remetente, senha)
@@ -129,5 +143,6 @@ def enviar_email(destinatario, assunto, mensagem):
     finally:
         server.quit()
 
+# Função principal para executar o aplicativo
 if __name__ == '__main__':
     app.run(debug=True)

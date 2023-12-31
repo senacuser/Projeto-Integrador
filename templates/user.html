@@ -29,7 +29,7 @@
 
         <ul>
             <li class="item-menu ativo">
-                <a href="#">
+                <a href="{{ url_for('iniciar') }}">
                     <span class="icon"><i class="bi bi-stars"></i></span>
                     <span class="txt-link">Iniciar</span>
                 </a>
@@ -47,13 +47,13 @@
                 </a>
             </li>
             <li class="item-menu">
-                <a href="#">
+                <a href="{{ url_for('notas') }}">
                     <span class="icon"><i class="bi bi-journal-bookmark"></i></span>
                     <span class="txt-link">Anotações</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="#">
+                <a href="{{ url_for('perfil') }}">
                     <span class="icon"><i class="bi bi-person-circle"></i></span>
                     <span class="txt-link">Perfil</span>
                 </a>

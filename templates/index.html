@@ -1,40 +1,109 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylehome.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" contente="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../static/stylehome.css" />
     <title>Finançaflex</title>
-</head>
-<body>
-    <header id="faixa">
-        <div class="navbar">    
-            <img class="logo" src="{{ url_for('static', filename='logohome.png') }}" height="150px" alt="Finançaflex Logo">
-
-            <ul class="links">
-                <li><a href="#solucoes">Nossas soluções</a></li>
-                <li><a href="#sobre">Sobre nós</a></li>
-            </ul>
-            <a href="{{ url_for('cadastro') }}" class="action_btn">ACESSAR</a>
-        </div>
+  </head>
+  <body>
+    <header id="faixa" class="header">
+      <a href="../templates/index.html">
+        <img class="logo" src="../static/logohome.png" />
+      </a>
+      <nav class="navbar">
+        <ul class="menu">
+          <li class="menu-item">
+            <a href="Nossas soluções">Nossas soluções</a>
+          </li>
+          <li class="menu-item"><a href="Sobre nós">Sobre nós</a></li>
+          <a href="{{ url_for('cadastro') }}" class="action_btn">ACESSAR</a>
+        </ul>
+      </nav>
+      <button class="drop-btn"></button>
     </header>
-    <section class="banner"></section>
+
     <main>
-        <section id="solucoes">
-            <h2>Nossas Soluções</h2>
-            
-        </section>
-        <section id="sobre">
-            <h2>Sobre Nós</h2>
-            
-        </section>
-        <section id="texto01">
-            <h3>Conquiste a estabilidade financeira: Finançaflex. <br>
-                Sua ferramenta essencial para gerir <br>
-                despesas pessoais e empresariais.</h3>
-        </section>
+      <section class="banner">
+        <h1 class="main-title">
+          <span class="span">Descubra a solução inteligente para</span>
+          <span class="span">otimizar seus gastos e alcançar</span>
+          <span class="company-em span">o sucesso financeiro.</span>
+        </h1>
+      </section>
+      <section class="banner banner-02">
+        <h2 class="main-title">
+          Comece agora e construa um futuro
+          <span>financeiramente sólido.</span>
+        </h2>
+      </section>
+      <section class="banner banner-03">
+        <h2 class="main-title">
+          <span>Otimize custos, maximize lucros!</span>
+          <span>Soluções eficientes para impulsionar</span>
+          <span>a saúde financeira da sua empresa</span>
+        </h2>
+      </section>
     </main>
-</body>
+
+    <script>
+      let dropBTN = document.querySelector(".drop-btn");
+      let nav = document.querySelector(".navbar");
+      let menu = document.querySelector(".menu");
+      let span = document.querySelector('.company-em')
+
+      // Menu-drop
+      dropBTN.addEventListener("click", () => {
+        dropBTN.classList.toggle("btn-active");
+        menu.classList.toggle("active");
+        nav.classList.toggle("nav-active");
+      });
+
+      // Slide de texto
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("main-active");
+            // observer.unobserve(entry.target)
+          } else {
+            entry.target.classList.remove("main-active");
+          }
+        });
+      });
+
+      // function type(element) {
+      //   text = element.textContent
+      //   let letter = ''
+      //   let i = 0
+      //   let interval = setInterval(() => {
+      //     if (letter.length == text.length) {
+      //       cancelInterval()
+      //     }
+      //     letter += text[i]
+      //     element.textContent = letter
+      //     i++
+      //   }, 75)
+      // }
+
+      // const cancelInterval = () => {
+      //   clearInterval(interval)
+      // }
+
+
+      // type(span)
+
+      let title = document.querySelectorAll(".main-title");
+      title.forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+
+  </body>
 </html>
