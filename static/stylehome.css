@@ -214,16 +214,16 @@ main {
 }
 
 @media (max-width: 1000px) {
-    
+
     .navbar {
         opacity: 0;
+        transition: opacity .2s ease;
     }
 
     .navbar .menu {
         position: absolute;
         top: 6rem;
         right: 4rem;
-        position: absolute;
         flex-direction: column;
         background-color: hsla(0, 0%, 0%, 0.5);
         padding: 2rem 1rem;
@@ -272,12 +272,11 @@ main {
         }
 
     .navbar.nav-active {
+        transition: opacity .5s ease;
         opacity: 1;
     }
 
     .menu.active {
-       transition: .4s ease; 
-       opacity: 1;
        transform: translate(0);
     }
 

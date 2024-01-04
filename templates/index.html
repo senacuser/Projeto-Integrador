@@ -4,18 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" contente="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-      crossorigin="anonymous"
-    />
     <link rel="stylesheet" href="{{ url_for('static', filename='stylehome.css') }}">
+    <!-- <link rel="stylesheet" href="../static/stylehome.css"> -->
     <title>Finançaflex</title>
   </head>
   <body>
     <header id="faixa" class="header">
-      <a href="../templates/index.html">
+      <a href="{{ url_for('index') }}">
         <img class="logo" src="../static/logohome.png" />
       </a>
       <nav class="navbar">
@@ -53,57 +48,7 @@
       </section>
     </main>
 
-    <script>
-      let dropBTN = document.querySelector(".drop-btn");
-      let nav = document.querySelector(".navbar");
-      let menu = document.querySelector(".menu");
-      let span = document.querySelector('.company-em')
-
-      // Menu-drop
-      dropBTN.addEventListener("click", () => {
-        dropBTN.classList.toggle("btn-active");
-        menu.classList.toggle("active");
-        nav.classList.toggle("nav-active");
-      });
-
-      // Slide de texto
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("main-active");
-            // observer.unobserve(entry.target)
-          } else {
-            entry.target.classList.remove("main-active");
-          }
-        });
-      });
-
-      // function type(element) {
-      //   text = element.textContent
-      //   let letter = ''
-      //   let i = 0
-      //   let interval = setInterval(() => {
-      //     if (letter.length == text.length) {
-      //       cancelInterval()
-      //     }
-      //     letter += text[i]
-      //     element.textContent = letter
-      //     i++
-      //   }, 75)
-      // }
-
-      // const cancelInterval = () => {
-      //   clearInterval(interval)
-      // }
-
-
-      // type(span)
-
-      let title = document.querySelectorAll(".main-title");
-      title.forEach((el) => {
-        observer.observe(el);
-      });
-    </script>
+    <script src="{{ url_for('static', filename='inicial.js') }}"></script>
 
   </body>
 </html>
