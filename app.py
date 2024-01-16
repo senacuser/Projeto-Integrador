@@ -27,7 +27,7 @@ def criar_tabela_usuarios():
 criar_tabela_usuarios()
 
 # Página inicial
-@app.route('/')
+@app.route('/')     
 def index():
     return render_template('index.html')
 
@@ -117,6 +117,14 @@ def notas():
 @app.route('/perfil')
 def perfil():
     return render_template('perfil.html')
+
+@app.route('/sobre')
+def sobre():
+    return render_template('sobre.html')
+
+@app.route('/solucoes')
+def solucoes():
+    return render_template('solucoes.html')
 
 # Função para enviar e-mails
 def enviar_email(destinatario, assunto, mensagem):

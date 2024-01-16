@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre Nós</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='sobre.css') }}"
+    />
+  </head>
+  <header id="faixa" class="header">
+    <a href="{{ url_for('index') }}">
+      <img class="logo" src="../static/logohome.png" alt="Logo da empresa"/>
+    </a>
+    <nav class="navbar">
+      <ul class="menu">
+        <li class="menu-item">
+          <a href="Nossas soluções">Nossas soluções</a>
+        </li>
+        <li class="menu-item"><a href="{{ url_for('sobre')}}">Sobre nós</a></li>
+        <a href="{{ url_for('cadastro') }}" class="action_btn">ACESSAR</a>
+      </ul>
+    </nav>
+    <button class="drop-btn"></button>
+  </header>
+  <body>
+    <main class="main-about-us">
+      <section class="about-section-container">
+        <div class="img-container">
+          <img src="../static/backabout.jpg" alt="Sobre nossa empresa" />
+        </div>
+        <section class="inner-container">
+          <h1 class="about-title">Sobre nós</h1>
+          <p class="text">
+            Nós começamos com uma ideia simples: ajudar as pessoas a ter mais
+            controle sobre as suas finanças. Desde o início, nosso objetivo
+            principal têm sido capacitar nossos clientes a tomar decisões
+            financeiras e alcançar a estabilidade em sua vida financeira.
+          </p>
+          <p>
+            À medida que crescemos, nosso compromisso em fornecer soluções
+            finnaceiras inovadoras e acessíveis tem sido a base do nosso
+            sucesso. Acreditamos que todos merecem ter acesso à serviços
+            financeiros de qualidade, independente de sua condição financeira. É
+            por isso que trabalhamos arduamente para tornar nossas soluções
+            acessíveis e fáceis de usar, para que todos possam aproveitar
+            benefícios de uma vida financeira estável e próspera.
+          </p>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

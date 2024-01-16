@@ -16,9 +16,10 @@
       <nav class="navbar">
         <ul class="menu">
           <li class="menu-item">
-            <a href="Nossas soluções">Nossas soluções</a>
+            <a href="{{ url_for('solucoes') }}">Nossas soluções</a>
           </li>
-          <li class="menu-item"><a href="Sobre nós">Sobre nós</a></li>
+          <li class="menu-item"><a href="{{ url_for('sobre')}}">Sobre nós</a></li>
+          
           <a href="{{ url_for('cadastro') }}" class="action_btn">ACESSAR</a>
         </ul>
       </nav>
