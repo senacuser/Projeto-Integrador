@@ -1,33 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/stylesolucoes.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-    
-</head>
-<body>
-    <div class="container">
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/stylesolucoes.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header id="faixa" class="header">
+      <a href="{{ url_for('index') }}">
+        <img class="logo" src="../static/logohome.png" />
+      </a>
+      <nav class="navbar">
+        <ul class="menu">
+          <li class="menu-item">
+            <a href="{{ url_for('solucoes') }}">Nossas soluções</a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url_for('sobre')}}">Sobre nós</a>
+          </li>
+
+          <a href="{{ url_for('cadastro') }}" class="action_btn">ACESSAR</a>
+        </ul>
+      </nav>
+      <button class="drop-btn"></button>
+    </header>
+    <main class="main-content">
+      <div class="container">
         <h1>Nossas soluções</h1>
         <div class="row">
-            <div class="service">
-                <i class="fa-regular fa-bell"></i>
-                <h2>Notificações instântaneas</h2>
-            </div>
-            <div class="service">
-                <i class="fa-solid fa-chart-line"></i>
-                <h2>Geração de dashboards</h2>
-            </div>
-            <div class="service">
-                <i class="fa-regular fa-calendar"></i>
-                <h2>Calendário personalizado</h2>
-            </div>
-            <div class="service">
-                <i class="fa-solid fa-arrow-trend-up"></i>
-                <h2>Metas definidas</h2>
-            </div>
+          <div class="service">
+            <i class="fa-regular fa-bell"></i>
+            <h2>Notificações instântaneas</h2>
+          </div>
+          <div class="service">
+            <i class="fa-solid fa-chart-line"></i>
+            <h2>Geração de dashboards</h2>
+          </div>
+          <div class="service">
+            <i class="fa-regular fa-calendar"></i>
+            <h2>Calendário personalizado</h2>
+          </div>
+          <div class="service">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            <h2>Metas definidas</h2>
+          </div>
         </div>
-    </div>
-</body>
+      </div>
+    </main>
+
+    <script src="../static/inicial.js"></script>
+  </body>
 </html>

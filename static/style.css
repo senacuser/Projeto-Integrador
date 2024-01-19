@@ -9,12 +9,12 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background-image: linear-gradient(#7302eb,#eb02dc);
+  /* background-image: linear-gradient(#7302eb,#eb02dc); */
 }
 
 
 .header {
-  background-color: hsl(269, 93%, 24%);
+  background-color: hsl(268, 49%, 7%);
   justify-content: center;
 }
 
@@ -23,7 +23,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-
+  padding-top: 5.625rem;
 }
 .content {
   background-color: #fff;

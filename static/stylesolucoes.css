@@ -1,9 +1,19 @@
+@import url('../static/stylehome.css');
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap");
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
+}
+
+.header {
+    background-color: hsl(268, 49%, 7%);
+}
+
+.main-content {
+    padding-top: 5.625rem;
 }
 
 .container{
@@ -52,11 +62,12 @@
     margin-bottom: 10px;
     color: #7302eb
 }
- .service h2{
+ 
+.service h2{
     font-weight: 600;
     margin-bottom: 8px;
 
- }
+}
 
  .service:hover{
     background: #7302eb;
