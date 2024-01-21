@@ -1,6 +1,11 @@
-let dropBTN = document.querySelector(".drop-btn");
-let nav = document.querySelector(".navbar");
-let menu = document.querySelector(".menu");
+const dropBTN = document.querySelector(".drop-btn");
+const nav = document.querySelector(".navbar");
+const menu = document.querySelector(".menu");
+const title = document.querySelectorAll(".main-title");
+
+// Container da imagem e texto da página sobre
+const img_container = document.querySelector('.img-container');
+const inner_container = document.querySelector('.inner-container') ;
 
 // Classes para o menu-dropdown
 dropBTN.addEventListener("click", () => {
@@ -17,7 +22,13 @@ window.addEventListener("resize", () => {
   }, 100);
 });
 
-// Slide dos textos
+// Animação da imagem e texto da página sobre
+window.addEventListener('load', () => {
+  img_container.classList.add('img-container-active')
+  inner_container.classList.add('inner-container-active')
+})
+
+// Slide dos textos usando a API IntersectionObserver
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -29,7 +40,6 @@ const observer = new IntersectionObserver((entries) => {
   });
 });
 
-let title = document.querySelectorAll(".main-title");
 title.forEach((el) => {
   observer.observe(el);
 });
