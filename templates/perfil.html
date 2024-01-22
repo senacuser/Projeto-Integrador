@@ -2,22 +2,34 @@
 <html lang="pt-br">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width", initial-scale="1.0">
+  <meta name="viewport" content="width=device-width" , initial-scale="1.0">
   <title>Perfil do Usuário</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='perfil.css') }}">
 
 </head>
+
 <body>
-    <div class="profile">
 
-          <img id="user-photo" src="default-avatar.png" alt="Foto de perfil">
-  <input type="file" id="photo-input" accept="image/*">
-  <input type="text" id="user-name" placeholder="Nome">
+  <div class="profile">
+    <div class="profile-container">
+      <div class="profile-header">
+        <div class="profile-picture">
+          <img id="miinha_imagem" src="gat.jpg" alt="Foto de perfil">
+        </div>
+      </div>
+      <input type="file" id="photo-input" accept="image/*">
+      <input type="text" id="user-name" placeholder="Nome">
 
-  <input type="text" id="user-email" placeholder="Email">
-  <input type="text" id="user-location" placeholder="Localização">
-  <input type="tel" id="fone" name="fone" placeholder="Tel"required pattern="[0-9]{2} [0-9]{5}-[0-9]{4} " placeholder="11 99999-9999">
-  <button onclick="saveProfile()">Salvar</button>
-</div>
+      <input type="text" id="user-email" placeholder="Email">
+      <input type="text" id="user-location" placeholder="Localização">
+      <input type="tel" id="fone" name="fone" placeholder="Tel" required pattern="[0-9]{2} [0-9]{5}-[0-9]{4} "
+        placeholder="11 99999-9999">
+      <button onclick="saveProfile()">Salvar</button>
+    </div>
+  </div>
+  <script src="{{url_for('static', filename='perfil.js')}}"></script>
+</body>
+
 </html>

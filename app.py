@@ -149,16 +149,12 @@ def cadastro():
 # Rota para o calendário
 @app.route('/calendario')
 def calendario():
-    return render_template('calend.html')
+    return render_template('calendario.html')
 
 # Rotas adicionadas com caminhos únicos
-@app.route('/iniciar')
-def iniciar():
-    return render_template('iniciar.html')
-
-@app.route('/notas')
-def notas():
-    return render_template('notas.html')
+@app.route('/controle')
+def controle():
+    return render_template('controle.html')
 
 @app.route('/perfil')
 def perfil():
