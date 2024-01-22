@@ -61,6 +61,9 @@ def login():
 
     # Se a solicitação for do tipo GET, renderize a página de login
     return render_template('cadastro.html')
+@app.route('/reset')
+def reset():
+    return render_template('reset.html')
 
 # Rota para o dashboard (página do usuário)
 @app.route('/user')
