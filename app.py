@@ -146,6 +146,13 @@ def cadastro():
     # Se a solicitação for do tipo GET, renderize a página de cadastro
     return render_template('cadastro.html')
 
+
+# Rota para o dashboard (página do usuário)
+@app.route('/dashboard')
+def dashboard():
+    # Lógica para processar a página do dashboard
+    return render_template('dashboard.html')
+
 # Rota para o calendário
 @app.route('/calendario')
 def calendario():
