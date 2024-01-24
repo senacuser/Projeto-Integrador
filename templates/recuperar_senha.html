@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+</head>
+
+<body>
+    <div class="reset">
+        <h2>Recuperar senha</h2>
+        <br>
+        <form method="post" action="{{ url_for('recuperar_senha') }}">
+            <label for="email">Email:</label>
+            <br>
+            <input type="text" id="email" name="email" required>
+            <br>
+            <br>
+            <button type="submit">Recuperar Senha</button>
+        </form>
+    </div>
+</body>
+
+</html>

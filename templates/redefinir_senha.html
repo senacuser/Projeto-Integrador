@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redefinir Senha</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='redefinir.css') }}">
+</head>
+
+<body>
+    <div class="redefinir-senha">
+        <h2>Redefinir Senha</h2>
+        <form method="post" action="{{ url_for('redefinir_senha', email=email) }}">
+            <label for="nova_senha">Nova Senha:</label>
+            <input type="password" id="nova_senha" name="nova_senha" required>
+            <br>
+            <button class="btn" type="submit">Redefinir Senha</button>
+        </form>
+    </div>
+</body>
+
+</html>

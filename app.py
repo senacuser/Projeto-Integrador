@@ -27,7 +27,7 @@ def criar_tabela_usuarios():
 criar_tabela_usuarios()
 
 # Página inicial
-@app.route('/')     
+@app.route('/')
 def index():
     return render_template('index.html')
 
@@ -61,6 +61,52 @@ def login():
 
     # Se a solicitação for do tipo GET, renderize a página de login
     return render_template('cadastro.html')
+
+# Rota para a página de recuperação de senha
+@app.route('/recuperar_senha', methods=['GET', 'POST'])
+def recuperar_senha():
+    if request.method == 'POST':
+        email = request.form['email']
+
+        # Lógica para verificar se o e-mail existe no banco de dados
+        conn = sqlite3.connect('usuarios.db')
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM usuarios WHERE email = ?", (email,))
+        usuario = cursor.fetchone()
+
+        conn.close()
+
+        if usuario:
+            # Se o e-mail existe, redirecione para a página de redefinição de senha
+            return redirect(url_for('redefinir_senha', email=email))
+        else:
+            # Se o e-mail não existe, exiba uma mensagem de erro
+            return render_template('recuperar_senha.html', error='E-mail não encontrado. Verifique o e-mail e tente novamente.')
+
+    # Se a solicitação for do tipo GET, renderize a página de recuperação de senha
+    return render_template('recuperar_senha.html')
+
+# Rota para a página de redefinição de senha
+@app.route('/redefinir_senha/<email>', methods=['GET', 'POST'])
+def redefinir_senha(email):
+    if request.method == 'POST':
+        nova_senha = request.form['nova_senha']
+
+        # Lógica para atualizar a senha no banco de dados
+        conn = sqlite3.connect('usuarios.db')
+        cursor = conn.cursor()
+
+        cursor.execute("UPDATE usuarios SET senha = ? WHERE email = ?", (nova_senha, email))
+
+        conn.commit()
+        conn.close()
+
+        # Redirecionar para a página de login após a redefinição da senha
+        return redirect(url_for('login'))
+
+    # Se a solicitação for do tipo GET, renderize a página de redefinição de senha
+    return render_template('redefinir_senha.html', email=email)
 
 # Rota para o dashboard (página do usuário)
 @app.route('/user')
@@ -103,16 +149,12 @@ def cadastro():
 # Rota para o calendário
 @app.route('/calendario')
 def calendario():
-    return render_template('calend.html')
+    return render_template('calendario.html')
 
 # Rotas adicionadas com caminhos únicos
-@app.route('/iniciar')
-def iniciar():
-    return render_template('iniciar.html')
-
-@app.route('/notas')
-def notas():
-    return render_template('notas.html')
+@app.route('/controle')
+def controle():
+    return render_template('controle.html')
 
 @app.route('/perfil')
 def perfil():

@@ -1,50 +1,59 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(
-        90deg,
-        rgb(2, 0, 36, 1) 0%,
-        rgba(9, 9, 121, 1) 35%,
-        rgba(0, 212, 255, 1) 100%
-      ); /* #31029c, #c90099, 
-    #bffffd, #22016d, #d3c0ff*/
-  }
-  .profile {
-    max-width: 1000px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    background-color: #fff;
-  }
-  .profile img {
-    max-width: 150px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-  }
-  .profile input[type="text"] {
-    width: 80%;
-    margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 0px;
-    border: 1px solid #ccc;
-  }
-  .profile input[type="tel"] {
-    width: 40%;
-    margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 0px;
-    border: 1px solid #ccc;
-  }
-  .profile button {
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(90deg,
+      #ffffff 0%,
+      rgb(255, 255, 255) 35%,
+      #bffffd 100%);
+  overflow: hidden;
+  /* Hide overflow for a clean look */
+}
+
+.profile input[type="file"],
+.profile input[type="text"],
+.profile input[type="tel"] {
+  width: 80%;
+  margin: 10px auto;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: block;
+  box-sizing: border-box;
+}
+
+.profile button {
+  width: 80%;
+  margin: 20px auto;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  box-sizing: border-box;
+}
+
+#user-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #03038eaf;
+  box-sizing: border-box;
+  background-size: cover;
+  object-fit: cover; /* Garante que a imagem mantenha a proporção original */
+}
+
+.profile {
+  background: #7302eb;
+  border-radius: 10%;
+  align-items: center;
+  text-align: center;
+  box-sizing: content-box;
+  padding: 20px;
+}

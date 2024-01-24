@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/stylesolucoes.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesolucoes.css') }}" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -29,29 +29,45 @@
       <button class="drop-btn"></button>
     </header>
     <main class="main-content">
-      <div class="container">
-        <h1>Nossas soluções</h1>
-        <div class="row">
-          <div class="service">
-            <i class="fa-regular fa-bell"></i>
-            <h2>Notificações instântaneas</h2>
+      <section class="our-solutions-section-banner">
+        <div class="our-solutions-title-container">
+          <h1 class="our-solutions-main-title">Nossas Soluções</h1>
+          <p>Cofira nossas soluções e saiba mais sobre nossos serviços.</p>
+
+        </div>
+      </section>
+      <section class="our-solutions-section-items">
+        <div class="our-solutions-items-title-container">
+          <h2 class="items-title">Simples, funcional e sem burocracias</h2>
+          <p class="items-para">Confira abaixo nossas principais soluções que ajudarão você no controle de suas finanças:</p>
+        </div>
+        <div class="our-solutions-cards-container">
+          <div class="our-solutions-cards">
+            <i class="fa-solid fa-bell"></i>
+            <h3 class="cards-title">Notificações instantâneas</h3>
+            <p class="cards-title-para">Receba notificações sobre seus gastos e receitas.</p>
           </div>
-          <div class="service">
+          <div class="our-solutions-cards">
             <i class="fa-solid fa-chart-line"></i>
-            <h2>Geração de dashboards</h2>
+            <h3 class="cards-title">Geração de dashboards</h3>
+            <p class="cards-title-para">Gere gráficos intuitivos com informações sobre seus proventos.</p>
           </div>
-          <div class="service">
-            <i class="fa-regular fa-calendar"></i>
-            <h2>Calendário personalizado</h2>
+          <div class="our-solutions-cards">
+            <i class="fa-solid fa-calendar"></i>
+            <h3 class="cards-title">Calendário personalizado</h3>
+            <p class="cards-title-para">
+              Crie datas específicas sobre suas finanças.
+            </p>
           </div>
-          <div class="service">
+          <div class="our-solutions-cards">
             <i class="fa-solid fa-arrow-trend-up"></i>
-            <h2>Metas definidas</h2>
+            <h3 class="cards-title">Metas definidas</h3>
+            <p class="cards-title-para">Defina metas e objetivos sobre seu futuro financeiro.</p>
           </div>
         </div>
-      </div>
+      </section>
     </main>
 
-    <script src="../static/inicial.js"></script>
+    <script src="{{ url_for('static', filename='inicial.js') }}"></script>
   </body>
 </html>
