@@ -37,7 +37,7 @@
 }
 
 .our-solutions-section-banner .our-solutions-main-title {
-    font-size: calc(2rem + 2vw);
+    font-size: calc(2rem + 1.5vw);
     /* color: #7302eb; */
     color: hsl(0, 0%, 96%);
     word-wrap: break-word;

@@ -40,7 +40,7 @@
     transform: translateY(500px);
     transition: transform 1s ease;
     .about-title {
-      font-size: 5rem;
+      font-size: calc(2rem + 1.5vw);
       color: #7302eb;
       margin-bottom: 2rem;
       word-wrap: break-word;
@@ -89,9 +89,6 @@
 
   .inner-container {
     padding: 2rem 4rem;
-    .about-title {
-      font-size: 4rem !important;
-    }
   }
 }
 
