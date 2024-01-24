@@ -37,7 +37,7 @@
 }
 
 .our-solutions-section-banner .our-solutions-main-title {
-    font-size: 5rem;
+    font-size: calc(2rem + 2vw);
     /* color: #7302eb; */
     color: hsl(0, 0%, 96%);
     word-wrap: break-word;
@@ -58,7 +58,7 @@
     max-width: calc(100% - 32rem);
     margin: 0 auto;
     .items-title {
-        font-size: 3rem;
+        font-size: calc(1.5rem + 1.5vw);
         color: hsl(268, 49%, 7%);
         margin-bottom: 1rem;
         + .items-para {
@@ -131,7 +131,7 @@
 
 }
 
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
 
     .our-solutions-title-container {
         .our-solutions-main-title {
@@ -140,7 +140,7 @@
         }
     }
 
-}
+} */
 
 @media (max-width: 680px) {
 

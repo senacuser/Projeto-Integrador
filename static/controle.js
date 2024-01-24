@@ -1,95 +1,150 @@
-const tbody = document.querySelector("tbody");
-const descItem = document.querySelector("#desc");
-const amount = document.querySelector("#amount");
-const type = document.querySelector("#type");
-const btnNew = document.querySelector("#btnNew");
+const transactionUl = document.querySelector('#transactions');
+const incomeDisplay = document.querySelector('#money-plus');
+const expenseDisplay = document.querySelector('#money-minus');
+const balanceDisplay = document.querySelector('#balance');
+const form = document.querySelector('#form');
+const inputTransactionName = document.querySelector('#text');
+const inputTransactionAmount = document.querySelector('#amount');
+const selectTransactionType = document.querySelector('#type');
 
-const incomes = document.querySelector(".incomes");
-const expenses = document.querySelector(".expenses");
-const total = document.querySelector(".total");
+// Restante do código...
 
-let items;
+form.addEventListener('submit', event => {
+  event.preventDefault();
 
-btnNew.onclick = () => {
-  if (descItem.value === "" || amount.value === "" || type.value === "") {
-    return alert("Preencha todos os campos!");
+  const transactionName = inputTransactionName.value.trim();
+  const transactionAmount = Number(inputTransactionAmount.value.trim());
+  const transactionType = selectTransactionType.value;
+
+  if (transactionName === '' || isNaN(transactionAmount)) {
+    alert('Por favor, preencha nome e valor da transação');
+    return;
   }
 
-  items.push({
-    desc: descItem.value,
-    amount: Math.abs(amount.value).toFixed(2),
-    type: type.value,
-  });
+  const transaction = {
+    id: generateID(),
+    name: transactionName,
+    amount: transactionType === 'Saída' ? -Math.abs(transactionAmount) : transactionAmount
+  };
 
-  setItensBD();
+  transactions.push(transaction);
+  init();
+  updateLocalStorage();
 
-  loadItens();
+  inputTransactionName.value = '';
+  inputTransactionAmount.value = '';
+});
+// Configura o armazenamento das transações no Local Storage
+// A const abaixo recebe o valor da chave transactions do Local Storage
+// ... e converte em um objeto JavaScript
+const localStorageTransactions = JSON.parse(localStorage
+  .getItem('transactions'))
+// A const abaixo verifica se a chave transactions do Local Storage
+// ... é diferente de nulo, para atribuir a variável acima ou, do contrário,
+// ... um array vazio
+let transactions = localStorage
+  .getItem('transactions') !== null ? localStorageTransactions : []
 
-  descItem.value = "";
-  amount.value = "";
-};
-
-function deleteItem(index) {
-  items.splice(index, 1);
-  setItensBD();
-  loadItens();
+const removeTransaction = ID => {
+  // Remove uma transação pelo ID e atualiza no Local Storage e na página
+  transactions = transactions.filter(transaction => 
+    transaction.id !== ID)
+  updateLocalStorage()
+  init()
 }
 
-function insertItem(item, index) {
-  let tr = document.createElement("tr");
+const addTransactionIntoDOM = transaction => {
+  // Não exibe transações com valor zero
+  if (transaction.amount === 0) {
+    return;
+  }
 
-  tr.innerHTML = `
-    <td>${item.desc}</td>
-    <td>R$ ${item.amount}</td>
-    <td class="columnType">${
-      item.type === "Entrada"
-        ? '<i class="bx bxs-chevron-up-circle"></i>'
-        : '<i class="bx bxs-chevron-down-circle"></i>'
-    }</td>
-    <td class="columnAction">
-      <button onclick="deleteItem(${index})"><i class='bx bx-trash'></i></button>
-    </td>
-  `;
+  
+  const operator = transaction.amount < 0 ? '-' : '+'
+  const CSSClass = transaction.amount < 0 ? 'minus' : 'plus'
+  const amountWithoutOperator = Math.abs(transaction.amount)
+  const li = document.createElement('li')
 
-  tbody.appendChild(tr);
+  li.classList.add(CSSClass)
+  li.innerHTML = `
+    ${transaction.name} 
+    <span>${operator} R$ ${amountWithoutOperator}</span>
+    <button class="delete-btn" onClick="removeTransaction(${transaction.id})">
+      x
+    </button>
+  `
+  // Não usar innerHTML, pois li é um objeto, e não uma string
+  // prepend insere como primeiro filho, append insere como último
+  transactionUl.prepend(li)
 }
 
-function loadItens() {
-  items = getItensBD();
-  tbody.innerHTML = "";
-  items.forEach((item, index) => {
-    insertItem(item, index);
-  });
-
-  getTotals();
+const updateBalanceValues = () => {
+  // Atualiza o somatório de receitas e despesas e o saldo
+  const transactionsAmounts = transactions
+    .map(transaction => transaction.amount)
+  const total = transactionsAmounts
+    .reduce((accumulator, transaction) => accumulator + transaction, 0)
+    .toFixed(2)
+  const income = transactionsAmounts
+    .filter(value => value > 0)
+    .reduce((accumulator, value) => accumulator + value, 0)
+    .toFixed(2)
+  const expense = Math.abs(transactionsAmounts
+    .filter(value => value < 0)
+    .reduce((accumulator, value) => accumulator + value, 0))
+    .toFixed(2)
+  
+  balanceDisplay.textContent = `R$ ${total}`
+  incomeDisplay.textContent = `R$ ${income}`
+  expenseDisplay.textContent = `R$ ${expense}`
 }
 
-function getTotals() {
-  const amountIncomes = items
-    .filter((item) => item.type === "Entrada")
-    .map((transaction) => Number(transaction.amount));
-
-  const amountExpenses = items
-    .filter((item) => item.type === "Saída")
-    .map((transaction) => Number(transaction.amount));
-
-  const totalIncomes = amountIncomes
-    .reduce((acc, cur) => acc + cur, 0)
-    .toFixed(2);
-
-  const totalExpenses = Math.abs(
-    amountExpenses.reduce((acc, cur) => acc + cur, 0)
-  ).toFixed(2);
-
-  const totalItems = (totalIncomes - totalExpenses).toFixed(2);
-
-  incomes.innerHTML = totalIncomes;
-  expenses.innerHTML = totalExpenses;
-  total.innerHTML = totalItems;
+const init = () => {
+  // Executa o preenchimento na página
+  transactionUl.innerHTML = ''
+  transactions.forEach(addTransactionIntoDOM)
+  updateBalanceValues()
 }
 
-const getItensBD = () => JSON.parse(localStorage.getItem("db_items")) ?? [];
-const setItensBD = () =>
-  localStorage.setItem("db_items", JSON.stringify(items));
+init()
 
-loadItens();
+const updateLocalStorage = () => {
+  // Atualiza a chave transactions do Local Storage para o array 
+  // ... de transações em forma de string
+  localStorage.setItem('transactions', JSON.stringify(transactions))
+}
+
+// Gera um id aleatório
+const generateID = () => Math.round(Math.random() * 1000)
+
+form.addEventListener('submit', event => {
+  // Escuta o submit do form para verificar se inputs estão
+  // ... preenchidos e adicionar no array de transações
+  event.preventDefault()
+
+  const transactionName = inputTransactionName.value.trim()
+  const transactionAmount = inputTransactionAmount.value.trim()
+
+  // if (transactionName === '' || transactionAmount === '') {
+  //   alert('Por favor, preencha nome e valor da transação')
+  //   return
+  // }
+  
+
+  // Cria o objeto
+  const transaction = { 
+    id: generateID(), 
+    name: transactionName, 
+    amount: Number(transactionAmount)
+  }
+
+  // Adiciona no array de transações, preenche na página e 
+  // ... atualiza no Local Storage
+  transactions.push(transaction)
+  init()
+  updateLocalStorage()
+
+  // Limpa os inputs
+  inputTransactionName.value = ''
+  inputTransactionAmount.value = ''
+})
