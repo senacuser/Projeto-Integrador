@@ -1,41 +1,22 @@
-// SIDEBAR TOGGLE
-
-let sidebarOpen = false;
-const sidebar = document.getElementById('sidebar');
-
-function openSidebar() {
-  if (!sidebarOpen) {
-    sidebar.classList.add('sidebar-responsive');
-    sidebarOpen = true;
-  }
-}
-
-function closeSidebar() {
-  if (sidebarOpen) {
-    sidebar.classList.remove('sidebar-responsive');
-    sidebarOpen = false;
-  }
-}
-
 // ---------- CHARTS ----------
 
 // BAR CHART
 const barChartOptions = {
   series: [
     {
-      data: [10, 8, 6, 4, 2],
+      data: [10, 8],
       name: 'Products',
     },
   ],
   chart: {
     type: 'bar',
     background: 'transparent',
-    height: 350,
+    height: 275,
     toolbar: {
       show: false,
     },
   },
-  colors: ['#2962ff', '#d50000', '#2e7d32', '#ff6d00', '#583cb3'],
+  colors: ['#2e7d32', '#d50000'],
   plotOptions: {
     bar: {
       distributed: true,
@@ -81,7 +62,7 @@ const barChartOptions = {
     theme: 'dark',
   },
   xaxis: {
-    categories: ['Laptop', 'Phone', 'Monitor', 'Headphones', 'Camera'],
+    categories: ['Entradas', 'Saídas'],
     title: {
       style: {
         color: '#f5f7ff',
@@ -103,7 +84,7 @@ const barChartOptions = {
   },
   yaxis: {
     title: {
-      text: 'Count',
+      text: 'Valor',
       style: {
         color: '#f5f7ff',
       },
@@ -130,15 +111,18 @@ const barChart = new ApexCharts(
 );
 barChart.render();
 
+
+
+
 // AREA CHART
 const areaChartOptions = {
   series: [
     {
-      name: 'Purchase Orders',
+      name: 'Entradas',
       data: [31, 40, 28, 51, 42, 109, 100],
     },
     {
-      name: 'Sales Orders',
+      name: 'Saídas',
       data: [11, 32, 45, 32, 34, 52, 41],
     },
   ],
@@ -213,7 +197,7 @@ const areaChartOptions = {
   yaxis: [
     {
       title: {
-        text: 'Purchase Orders',
+        text: 'Entradas',
         style: {
           color: '#f5f7ff',
         },
@@ -227,7 +211,7 @@ const areaChartOptions = {
     {
       opposite: true,
       title: {
-        text: 'Sales Orders',
+        text: 'Saídas',
         style: {
           color: '#f5f7ff',
         },

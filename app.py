@@ -147,22 +147,75 @@ def cadastro():
     return render_template('cadastro.html')
 
 
+# Configuração do banco de dados SQLite
+def criar_tabela_transacoes():
+    conn = sqlite3.connect('usuarios.db')
+    cursor = conn.cursor()
+
+    # Criar tabela de transações se não existir
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS transacoes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            usuario_id INTEGER,
+            nome TEXT NOT NULL,
+            valor REAL NOT NULL,
+            tipo TEXT NOT NULL,
+            timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (usuario_id) REFERENCES usuarios (id)
+        )
+    ''')
+
+    conn.commit()
+    conn.close()
+
+# Chama a função para criar a tabela de transações no início do aplicativo
+criar_tabela_transacoes()
+@app.route('/controle', methods=['POST', 'GET'])
+def controle():
+    if request.method == 'POST':
+        nome = request.form['nome']
+        valor = float(request.form['valor'])
+        tipo = request.form['tipo']
+
+        # Adicionar lógica para salvar as transações no banco de dados
+        conn = sqlite3.connect('usuarios.db')
+        cursor = conn.cursor()
+
+        cursor.execute("INSERT INTO transacoes (usuario_id, nome, valor, tipo) VALUES (?, ?, ?, ?)",
+                       (4, nome, valor if tipo == 'Entrada' else -valor, tipo))  
+
+        conn.commit()
+        conn.close()
+
+    return render_template('controle.html')
+
 # Rota para o dashboard (página do usuário)
 @app.route('/dashboard')
 def dashboard():
     # Lógica para processar a página do dashboard
-    return render_template('dashboard.html')
+    conn = sqlite3.connect('usuarios.db')
+    cursor = conn.cursor()
+
+    # Recuperar transações do banco de dados
+    cursor.execute("SELECT * FROM transacoes WHERE usuario_id = ?", (4,))  # Substitua 1 pelo ID do usuário logado
+    transacoes = cursor.fetchall()
+
+    conn.close()
+
+    # Calcular valores
+    salario = sum(transacao[2] for transacao in transacoes if transacao[3] == 'Salario')
+    entradas = sum(transacao[2] for transacao in transacoes if transacao[3] == 'Entrada')
+    saidas = sum(transacao[2] for transacao in transacoes if transacao[3] == 'Saida')
+    valor_total = entradas - saidas
+
+    return render_template('dashboard.html', salario=salario, entradas=entradas, saidas=saidas, valor_total=valor_total) 
+
+# Rota para a página de controle de despesas
 
 # Rota para o calendário
 @app.route('/calendario')
 def calendario():
     return render_template('calendario.html')
-
-# Rotas adicionadas com caminhos únicos
-@app.route('/controle')
-def controle():
-    return render_template('controle.html')
-
 @app.route('/perfil')
 def perfil():
     return render_template('perfil.html')
