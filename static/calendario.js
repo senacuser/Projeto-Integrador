@@ -233,8 +233,30 @@ function gotoDate() {
 function getActiveDay(date) {
   const day = new Date(year, month, date);
   const dayName = day.toString().split(" ")[0];
-  eventDay.innerHTML = dayName;
-  eventDate.innerHTML = date + " " + months[month] + " " + year;
+  switch (dayName) {
+    case 'Mon':
+      eventDay.innerHTML = 'Seg'
+      break
+    case 'Tue':
+      eventDay.innerHTML = 'Ter'
+      break
+    case 'Wed':
+      eventDay.innerHTML = 'Qua'
+      break
+    case 'Thu':
+      eventDay.innerHTML = 'Qui'
+      break
+    case 'Fri':
+      eventDay.innerHTML = 'Sex'
+      break
+    case 'Sat':
+      eventDay.innerHTML = 'Qui'
+      break
+    case 'Sun':
+      eventDay.innerHTML = 'Qui'
+      break
+  }
+  eventDate.innerHTML = `${date} ${months[month]} ${year}`;
 }
 
 //function update events when a day is active
