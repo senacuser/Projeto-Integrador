@@ -82,4 +82,5 @@ body {
   /* box-sizing: content-box; */
   padding: 20px;
   box-shadow: 0 8px 16px hsl(268, 49%, 7%);
+  transform: scale(1.3);
 }
