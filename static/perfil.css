@@ -1,15 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap");
+
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(90deg,
-      #ffffff 0%,
-      rgb(255, 255, 255) 35%,
-      #bffffd 100%);
+  background-color: hsl(268, 49%, 7%);
   overflow: hidden;
   /* Hide overflow for a clean look */
 }
@@ -20,40 +24,62 @@ body {
   width: 80%;
   margin: 10px auto;
   padding: 12px;
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   display: block;
   box-sizing: border-box;
+  outline: none;
+}
+
+.profile input:focus {
+  outline: 2px solid #8f2cf8;
+  box-shadow: 0 0 4px 4px #7302eb6b;
 }
 
 .profile button {
   width: 80%;
-  margin: 20px auto;
-  padding: 12px;
-  background-color: #007bff;
+  background-color: #7302eb;
   color: #fff;
+  padding: 12px 2rem;
   border: none;
-  border-radius: 5px;
+  outline: none;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
   cursor: pointer;
-  display: block;
-  box-sizing: border-box;
+  transition: .3s ease-in-out;
+  letter-spacing: 0.05rem;
+  margin-top: 1rem;
 }
+  
+  button:hover{
+      scale: 1.05;
+      color: #ffffff;
+      transition: .2s ease-in-out;
+  }
+
+  button:active{
+      scale: 0.95;
+  }
 
 #user-photo {
   width: 100px;
   height: 100px;
+  display: inline-block;
   border-radius: 50%;
-  border: 3px solid #03038eaf;
+  border: 2px solid #7302eb;
   box-sizing: border-box;
-  background-size: cover;
+  background-size: 100%;
   object-fit: cover; /* Garante que a imagem mantenha a proporção original */
 }
 
 .profile {
-  background: #7302eb;
-  border-radius: 10%;
+  background-color: hsl(264, 16%, 96%);
+  border-radius: 1.5em;
   align-items: center;
   text-align: center;
-  box-sizing: content-box;
+  /* box-sizing: content-box; */
   padding: 20px;
+  box-shadow: 0 8px 16px hsl(268, 49%, 7%);
 }
