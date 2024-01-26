@@ -1,11 +1,14 @@
-const dropBTN = document.querySelector(".drop-btn");
-const nav = document.querySelector(".navbar");
-const menu = document.querySelector(".menu");
-const title = document.querySelectorAll(".main-title");
+const dropBTN = document.querySelector(".drop-btn"),
+      nav = document.querySelector(".navbar"),
+      menu = document.querySelector(".menu"),
+      title = document.querySelectorAll(".main-title"),
+      solutionsSectionItems = document.querySelector('.our-solutions-section-items'),
+      solutionsCards = document.querySelectorAll('.our-solutions-cards');
+
 
 // Container da imagem e texto da página sobre
-const img_container = document.querySelector('.img-container');
-const inner_container = document.querySelector('.inner-container') ;
+const img_container = document.querySelector('.img-container'),
+      inner_container = document.querySelector('.inner-container');
 
 // Classes para o menu-dropdown
 dropBTN.addEventListener("click", () => {
@@ -40,6 +43,23 @@ const observer = new IntersectionObserver((entries) => {
   });
 });
 
+// Animação dos cards da página sobre -- Trabalho em progresso
+
+const newObserver = new IntersectionObserver((newEntries) => {
+  newEntries.forEach((newEntry) => {
+    if (newEntry.isIntersecting) {
+      solutionsCards.forEach((cards) => {
+        setInterval(() => {
+          cards.style.visibility = 'visible';
+          cards.style.transform = 'scale(1)';
+        }, 500)
+      })
+    }
+  })
+})
+
 title.forEach((el) => {
   observer.observe(el);
 });
+
+newObserver.observe(solutionsSectionItems);
