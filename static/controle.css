@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap");
 
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -9,26 +9,33 @@
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: hsl(268, 49%, 7%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   margin: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .container {
   margin: 30px auto;
   width: 450px;
- 
+  background-color: hsl(264, 16%, 96%);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px hsl(268, 49%, 7%);
 }
 
 h1 {
   letter-spacing: 1px;
   margin: 0;
   color: #2e75cc;
+}
+
+h2 {
+  color: white;
 }
 
 h3 {
@@ -49,11 +56,13 @@ h4 {
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
+  border-radius: .5rem;
 }
 
 .inc-exp-container > div {
   flex: 1;
   text-align: center;
+  
 }
 
 .inc-exp-container > div:first-of-type {
@@ -87,19 +96,21 @@ input[type='number'] {
   font-size: 16px;
   padding: 10px;
   width: 100%;
+  border-radius: .5rem;
 }
 
 .btn {
   cursor: pointer;
-  background-color:#7302eb ;
+  background-color: #7302eb ;
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;
   display: block;
   font-size: 16px;
-  margin: 10px 0 30px;
+  margin: 10px 0 0px;
   padding: 10px;
   width: 100%;
+  border-radius: 20px;
 }
 
 .btn:focus,
